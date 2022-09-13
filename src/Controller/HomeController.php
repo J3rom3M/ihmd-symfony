@@ -20,7 +20,7 @@ class HomeController extends AbstractController
         shuffle($data);
         $result = array_slice($data, 0, 3); 
 
-        return $this->render('home/home3.html.twig', [
+        return $this->render('home/home.html.twig', [
             'result' => $result,
         ]);
     }

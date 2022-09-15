@@ -25,7 +25,11 @@
 <br/>
 </br>
 <h2 class="mb-2 bg-secondary text-white rounded">Budget du film</h2>
+{% if  movieDetail.budget > 0 %}
 <p class="infos"><label>coût total du film :  </label> <b>{{ movieDetail.budget }} $</b></p>
+{% else %}
+<p class="infos"><label>coût total du film :  </label> <b>non indiqué</b></p>
+{% endif %}
 
 <br/>
 </br>
@@ -73,22 +77,22 @@
 <h2 class="mb-2 bg-secondary text-white rounded" id="casting">Langue originale du film</h2>
 <div class="row casting">
     {% if movieDetail.language  == "en" %}
-        <p class="infos"><label>Langue parlé dans le film :  </label><b>Anglais</b>.</p>
+        <p class="infos"><label>Langue originale du film :  </label><b> Anglais</b>.</p>
     {% endif %}
     {% if movieDetail.language  == "es" %}
-        <p class="infos"><label>Langue parlé dans le film :  </label> <b>Espagnol</b>.</p>
+        <p class="infos"><label>Langue originale du film :  </label> <b> Espagnol</b>.</p>
     {% endif %}
     {% if movieDetail.language  == "ru" %}
-        <p class="infos"><label>Langue parlé dans le film :  </label> <b>Russe</b>.</p>
+        <p class="infos"><label>Langue originale du film :  </label> <b> Russe</b>.</p>
     {% endif %}
     {% if movieDetail.language  == "fr" %}
-        <p class="infos"><label>Langue parlé dans le film :  </label> <b>Français</b>.</p>
+        <p class="infos"><label>Langue originale du film :  </label> <b> Français</b>.</p>
     {% endif %}
     {% if movieDetail.language  == "ja" %}
-        <p class="infos"><label>Langue parlé dans le film :  </label> <b>Japonais</b>.</p>
+        <p class="infos"><label>Langue originale du film :  </label> <b> Japonais</b>.</p>
     {% endif %}
     {% if movieDetail.language  == "it" %}
-        <p class="infos"><label>Langue parlé dans le film :  </label> <b>Italien</b>.</p>
+        <p class="infos"><label>Langue originale du film :  </label> <b> Italien</b>.</p>
     {% endif %}
     {# <p class="infos"><label>Langue parlé dans le film :  </label> {{ movieDetail.language }}</p> #}
 </div>

@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Profil de : {{user.email}}{% endblock %}
+
+{% block body %}
+<div class="example-wrapper">
+    <h1>Page de : {{user.email}}<h1>
+    <br/>
+    </br>
+    <div class="container">
+        <div class="row justify-content-end">
+            <p>{{user.email}}</p>
+            <p>Prénom</p>
+            <br/>
+            </br>
+            <p>Liste des films favoris : </p>
+            <ul>
+                <li>Film 1</li>
+                <li>Film 2</li>
+                <li>Film 3</li>
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock %}

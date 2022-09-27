@@ -29,7 +29,7 @@ class SearchController extends AbstractController
             ->add('query', TextType::class, [
                 'label' => false,
                 'attr' => [
-                    'class' => 'form-control me-2',
+                    'class' => 'form-group mb-2 form-control',
                     'type' =>'search',
                     'placeholder' => 'Entrez un mot-clé',
                     'aria-label'=> 'Search'

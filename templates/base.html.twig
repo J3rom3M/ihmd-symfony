@@ -54,7 +54,7 @@
                         </li>
                         <li class="nav-item">
                             {% if app.user is not null %}
-                                <a class="nav-link" href="#">Profile</a>
+                                <a class="nav-link" href="/profile">Profil</a>
                             {% endif %}
                         </li>
                         <li class="nav-item">
@@ -73,11 +73,15 @@
                 <div class="col">
                     <div id="breadcrumb">{% block breadcrumb %}{% endblock %}</div>
                     {% block adminnav %}{% endblock %}
-                    {% block body %}{% endblock %}
+                    {% block body %}
+                    {% block content %}{% endblock %}
+                    {% endblock %}
                 </div>
             </div>
             <hr>
-            <div class="small text-secondary pb-3">IHMD made with &hearts; by JM&reg; !</div>
+            {% block footer %}
+            <footer class="small text-secondary pb-3">&copy; Copyright 2022 - IHMD made with &hearts; by JM&reg; !</footer>
+            {% endblock %}
         </div>
 
     </body>

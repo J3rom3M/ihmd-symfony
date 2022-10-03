@@ -51,6 +51,27 @@ class MovieRepository extends ServiceEntityRepository
             ->getOneOrNullResult();
     }
 
+    // Find/search movies by title/synopsis
+    public function findMoviesByName(string $query)
+    {
+        $qb = $this->createQueryBuilder('p');
+        $qb
+            ->where(
+                $qb->expr()->andX(
+                    $qb->expr()->orX(
+                        $qb->expr()->like('p.title', ':query'),
+                        $qb->expr()->like('p.synopsis', ':query'),
+                    ),
+                    $qb->expr()->isNotNull('p.releaseDate')
+                )
+            )
+            ->setParameter('query', '%' . $query . '%')
+        ;
+        return $qb
+            ->getQuery()
+            ->getResult();
+    }
+
     // /**
     //  * @return Movie[] Returns an array of Movie objects
     //  */
@@ -94,25 +115,4 @@ class MovieRepository extends ServiceEntityRepository
         ;
     }
     */
-
-    // Find/search movies by title/synopsis
-    public function findMoviesByName(string $query)
-    {
-        $qb = $this->createQueryBuilder('p');
-        $qb
-            ->where(
-                $qb->expr()->andX(
-                    $qb->expr()->orX(
-                        $qb->expr()->like('p.title', ':query'),
-                        $qb->expr()->like('p.synopsis', ':query'),
-                    ),
-                    $qb->expr()->isNotNull('p.releaseDate')
-                )
-            )
-            ->setParameter('query', '%' . $query . '%')
-        ;
-        return $qb
-            ->getQuery()
-            ->getResult();
-    }
 }

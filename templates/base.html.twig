@@ -59,7 +59,13 @@
                             {% endif %}
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Backoffice</a>
+                            {% if app.user is not null %}
+                                {% for role in app.user.roles %}
+                                    {% if role == 'ROLE_ADMIN' %}
+                                        <a class="nav-link" href="/admin" tabindex="-1" aria-disabled="true">Backoffice</a>
+                                    {% endif %}
+                                {% endfor %}
+                            {% endif %}
                         </li>
                     </ul>
                     <div class="d-flex">

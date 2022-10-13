@@ -92,7 +92,33 @@
             {% endif %}
             {# <p class="infos"><label>Langue parlé dans le film :  </label> {{ movieDetail.language }}</p> #}
         </div>
-        
+        <br/>
+        </br>
+        <br/>
+        </br>
+        {# 
+        {% if app.user is not null %}
+            <h2 class="mb-2 bg-secondary text-white rounded" id="casting">Favoris</h2>
+            #}
+            <div class="row casting">
+                <div class="form-group">
+                {#}
+                    {% if favorite %}
+                        <input id="bookmark1" type="checkbox" name="bookmark" checked>
+                    {% else %}
+                    #}
+                        <input id="bookmark2" type="checkbox" name="bookmark">
+                    {#}
+                    {% endif %}
+                    #}
+                    <label for="bookmark">Ajouter à la liste des films favoris</label>
+                </div>
+            </div>
+        {#}
+        {% else %}
+            <h2 class="mb-2 bg-secondary text-white rounded" id="casting"></h2>
+        {% endif %}
+        #}
     </div>
 </div>
 {% endblock %}

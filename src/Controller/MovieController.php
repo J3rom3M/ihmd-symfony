@@ -2,9 +2,12 @@
 
 namespace App\Controller;
 
+use App\Entity\Bookmark;
 use App\Entity\Movie;
 use App\Repository\MovieRepository;
+use App\Repository\BookmarkRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Doctrine\ORM\Mapping\Id;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -38,8 +41,11 @@ class MovieController extends AbstractController
      *
      * @Route("/movie/{id}", name="movie_get_one", methods={"GET"})
      */
-    public function getOneMovie(MovieRepository $movieRepository, $id): Response
+    public function getOneMovie(MovieRepository $movieRepository, BookmarkRepository $bookmarkRepository, $id): Response
     {
+        $bookmarks = $bookmarkRepository->findAll();
+        //$value = $bookmarks[0]->getMovie()->getId();
+
         $movie = $movieRepository->find($id);
         // 404 ?
         if ($movie === null) {
@@ -47,8 +53,24 @@ class MovieController extends AbstractController
             throw $this->createNotFoundException("Movie not found.");
         }
 
+        // for ($i = 0; ; $i++) {
+        //     switch (($bookmarks[$i]->getMovie()->getId()) {
+        //         case $id:
+        //             $favorite = true;
+        //             break;
+        //         default:
+        //         $favorite = false;
+        //     }
+
+        //     if ($i == count($bookmarks)) {
+        //         break;
+        //     }
+
+        // }
+
         return $this->render('movie/detail.html.twig', [
             'movieDetail' => $movie,
+            //'favorite' => $favorite,
         ]);
     }
 }

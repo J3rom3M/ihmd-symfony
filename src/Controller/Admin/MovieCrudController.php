@@ -2,18 +2,18 @@
 
 namespace App\Controller\Admin;
 
-use App\Entity\User;
+use App\Entity\Movie;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\EmailField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 
-
-class UserCrudController extends AbstractCrudController
+class MovieCrudController extends AbstractCrudController
 {
     public static function getEntityFqcn(): string
     {
-        return User::class;
+        return Movie::class;
     }
 
 
@@ -21,8 +21,10 @@ class UserCrudController extends AbstractCrudController
     {
         return [
             IdField::new('id'),
-            EmailField::new('email'),
-            TextField::new('password'),
+            TextField::new('title'),
+            TextEditorField::new('synopsis'),
+            DateTimeField::new('release_date')->onlyOnDetail(),
         ];
     }
+
 }

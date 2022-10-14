@@ -6,6 +6,8 @@ use App\Entity\Bookmark;
 use App\Entity\Movie;
 use App\Repository\MovieRepository;
 use App\Repository\BookmarkRepository;
+use App\Repository\CommentRepository;
+use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\Mapping\Id;
 use Knp\Component\Pager\PaginatorInterface;
@@ -41,10 +43,16 @@ class MovieController extends AbstractController
      *
      * @Route("/movie/{id}", name="movie_get_one", methods={"GET"})
      */
-    public function getOneMovie(MovieRepository $movieRepository, BookmarkRepository $bookmarkRepository, $id): Response
+    public function getOneMovie(MovieRepository $movieRepository, BookmarkRepository $bookmarkRepository, CommentRepository $commentRepository, $id): Response
     {
         $bookmarks = $bookmarkRepository->findAll();
         //$value = $bookmarks[0]->getMovie()->getId();
+        $comments = $commentRepository->findAll();
+
+        //dump($comments[0]->getMovie()->getTitle());
+        //dump($comments[0]->getUser()->getEmail());
+        //dump($comments[0]->getContent());
+        // die();
 
         $movie = $movieRepository->find($id);
         // 404 ?
@@ -70,6 +78,7 @@ class MovieController extends AbstractController
 
         return $this->render('movie/detail.html.twig', [
             'movieDetail' => $movie,
+            'comments' => $comments,
             //'favorite' => $favorite,
         ]);
     }

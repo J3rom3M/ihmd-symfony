@@ -120,5 +120,16 @@
         {% endif %}
         #}
     </div>
+    <br/>
+    </br>
+    <br/>
+    </br>
+    <details open>
+        <summary  class="mb-2 bg-secondary text-white rounded" id="casting">Les commentaires : </summary>
+        {% for comment in comments %}
+        <p>{{ comment->getContent() }}</p>
+        <p>{{ comment->getUser()->getEmail() }}</p>
+        {% endfor %}
+    </details>
 </div>
 {% endblock %}

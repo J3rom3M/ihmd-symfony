@@ -2,18 +2,17 @@
 
 namespace App\Controller\Admin;
 
-use App\Entity\User;
+use App\Entity\Comment;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\EmailField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 
-
-class UserCrudController extends AbstractCrudController
+class CommentCrudController extends AbstractCrudController
 {
     public static function getEntityFqcn(): string
     {
-        return User::class;
+        return Comment::class;
     }
 
 
@@ -21,8 +20,10 @@ class UserCrudController extends AbstractCrudController
     {
         return [
             IdField::new('id'),
-            EmailField::new('email'),
-            TextField::new('password'),
+            TextField::new('user'),
+            TextField::new('movie'),
+            TextEditorField::new('comment'),
         ];
     }
+
 }

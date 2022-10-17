@@ -9,3 +9,4 @@ monolog:
             type: stream
             path: "php://stderr"
             level: debug
+            

@@ -124,11 +124,14 @@
     </br>
     <br/>
     </br>
-    <details open>
+    <details>
         <summary  class="mb-2 bg-secondary text-white rounded" id="casting">Les commentaires : </summary>
         {% for comment in comments %}
+        {# Code a adapter pour récupérer les commentaires en rapport avec le film et que chaque utilisateur apparaissent sous son commentaire.
         <p>{{ comment->getContent() }}</p>
-        <p>{{ comment->getUser()->getEmail() }}</p>
+        <p>{{ comment->getUser()->getEmail() }}</p> #}
+            <p>Contenu textuel du commentaire en rapport avec le film affiché</p>
+            <p>Informations sur l'auteur du commentaire</p>
         {% endfor %}
     </details>
 </div>
